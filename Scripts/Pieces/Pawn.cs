@@ -21,12 +21,6 @@ public partial class Pawn : Piece
         {
             HandleBlackPawn( true, ref buffer_idx, legal_move_buffer, board_manager );   
         }
-
-            /////////////////////////////////////////////////////////////
-            ///
-            ///                 TODO:           EN PASSANT
-            ///                 
-            /////////////////////////////////////////////////////////////
     }
 
     public override void FillLegalMoveBufferWithoutCheckChecking( Vector2I[] legal_move_buffer, BoardManager board_manager )

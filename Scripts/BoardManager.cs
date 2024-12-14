@@ -28,7 +28,7 @@ public partial class BoardManager : Node2D
     {
         PromotionChoice ??= GetNode<PromotionChoice>( "../CanvasLayer/PromotionChoice" );
 
-            // [ 576, 324 ] is the center of the screen for now.
+            // ( 256, 256 ) is the center of the screen for now.
         CreateBoard( new Vector2( 256, 256 ) );
     }
 

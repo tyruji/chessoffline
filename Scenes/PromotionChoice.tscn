@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://ft8vhgppsrph"]
+
+[ext_resource type="Script" path="res://Scripts/PromotionChoice.cs" id="1_ca7y6"]
+[ext_resource type="Texture2D" uid="uid://cv3qgvqilpuue" path="res://textures/queen.png" id="1_procb"]
+[ext_resource type="Texture2D" uid="uid://b8pakv1yk5ddn" path="res://textures/rook.png" id="2_gqwwp"]
+[ext_resource type="Texture2D" uid="uid://bxr2l33fvcaso" path="res://textures/bishop.png" id="3_18sla"]
+[ext_resource type="Texture2D" uid="uid://lhpwomqmmj6m" path="res://textures/knight.png" id="4_jnhp4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cgmaq"]
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[node name="PromotionChoice" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_ca7y6")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_cgmaq")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer"]
+modulate = Color(0.466181, 0.466181, 0.466181, 1)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Queen" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("1_procb")
+
+[node name="Rook" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_gqwwp")
+
+[node name="Bishop" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_18sla")
+
+[node name="Knight" type="TextureButton" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_jnhp4")

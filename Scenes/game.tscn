@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://ck08netieo4ji"]
+
+[ext_resource type="PackedScene" uid="uid://dogig8npewkxx" path="res://Scenes/UI.tscn" id="1_4y4o4"]
+[ext_resource type="PackedScene" uid="uid://bvcd1ltb8prqn" path="res://Scenes/game_over_screen.tscn" id="1_u8q8d"]
+[ext_resource type="PackedScene" uid="uid://ft8vhgppsrph" path="res://Scenes/PromotionChoice.tscn" id="2_5mof8"]
+[ext_resource type="Script" path="res://Scripts/BoardManager.cs" id="2_ux31b"]
+[ext_resource type="PackedScene" uid="uid://14x5a0x42voc" path="res://Prefabs/board_square.tscn" id="3_ud7vr"]
+[ext_resource type="Script" path="res://Scripts/GameHandler.cs" id="4_mod42"]
+[ext_resource type="Script" path="res://Scripts/SquareHighlighter.cs" id="5_8yhx3"]
+
+[node name="Game" type="Node2D"]
+texture_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameOverScreen" parent="CanvasLayer" node_paths=PackedStringArray("_GameHandler") instance=ExtResource("1_u8q8d")]
+_GameHandler = NodePath("../../GameHandler")
+
+[node name="UI" parent="CanvasLayer" instance=ExtResource("1_4y4o4")]
+mouse_filter = 2
+
+[node name="PromotionChoice" parent="CanvasLayer" instance=ExtResource("2_5mof8")]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="BoardManager" type="Node2D" parent="."]
+script = ExtResource("2_ux31b")
+_BoardSquarePrefab = ExtResource("3_ud7vr")
+_WhiteSquareColor = Color(0.956863, 0.992157, 1, 1)
+_BlackSquareColor = Color(0.243137, 0.176471, 0.156863, 1)
+
+[node name="GameHandler" type="Node2D" parent="."]
+script = ExtResource("4_mod42")
+
+[node name="SquareHighlighter" type="Node2D" parent="." node_paths=PackedStringArray("GameHandler")]
+script = ExtResource("5_8yhx3")
+GameHandler = NodePath("../GameHandler")

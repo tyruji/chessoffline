@@ -1,0 +1,51 @@
+[gd_scene load_steps=8 format=3 uid="uid://14x5a0x42voc"]
+
+[ext_resource type="Texture2D" uid="uid://hlhrtks1ryjp" path="res://textures/square.png" id="1_n4on0"]
+[ext_resource type="Script" path="res://Scripts/BoardSquare.cs" id="2_ihlpw"]
+[ext_resource type="Texture2D" uid="uid://mamu58ucowc4" path="res://textures/pawn.png" id="2_rgupu"]
+[ext_resource type="Texture2D" uid="uid://bnmfspmd70cut" path="res://textures/MoveHint.png" id="2_ua2pp"]
+
+[sub_resource type="Shader" id="Shader_2aqgp"]
+code = "shader_type canvas_item;
+
+uniform vec4 color : source_color;
+
+void fragment() {
+	COLOR = color;
+	COLOR.a *= texture( TEXTURE, UV ).a;
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d4yd2"]
+shader = SubResource("Shader_2aqgp")
+shader_parameter/color = Color(1, 0.815686, 0.101961, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xb2wb"]
+shader = SubResource("Shader_2aqgp")
+shader_parameter/color = Color(1, 0, 0.101961, 1)
+
+[node name="BoardSquare" type="Sprite2D"]
+texture = ExtResource("1_n4on0")
+script = ExtResource("2_ihlpw")
+
+[node name="PieceMoveOutline" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_d4yd2")
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("2_rgupu")
+
+[node name="PieceCaptureOutline" type="Sprite2D" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_xb2wb")
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("2_rgupu")
+
+[node name="MoveHighlight" type="Sprite2D" parent="."]
+visible = false
+self_modulate = Color(0.753984, 0.753984, 0.753984, 1)
+texture = ExtResource("2_ua2pp")
